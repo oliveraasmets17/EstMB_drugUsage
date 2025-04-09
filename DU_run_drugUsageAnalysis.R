@@ -51,11 +51,9 @@ MB_preprocessing = args[3]
 #------------------------------------------------#
 
 # Load packages
-library("readr")
-library("dplyr")
 library("effsize")
 library("ppcor")
-library("stringr")
+library("tidyverse")
 
 # Read the data
 current_usage_data <- readRDS(paste("RData/Interim/Data_medications_currentlyUsed_", ATC_level, ".rds", sep = "")) 

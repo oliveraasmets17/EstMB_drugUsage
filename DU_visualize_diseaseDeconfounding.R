@@ -8,17 +8,11 @@
 #------------------------------------------------#
 
 # Load the packages
-library("pheatmap")
-library("ggsci")
-library("ggtree")
-library("ggnewscale")
-library("ape")
-library("ggpubr")
 library("tidyverse")
-library("readr")
-library("xlsx")
+library("ggpubr")
 library("ggthemes")
-library("ggExtra")
+library("ggsci")
+
 
 
 # Reead phenotype data
@@ -72,6 +66,7 @@ disease_df_final <- disease_associations_CLR %>%
 
 # Summarize the number of hits
 deconf_aggregated <- disease_df_final %>% 
+  dplyr::mutate(disease_name = paste(ICD10_name, " (", disease, ")", sep = "")) %>% 
   dplyr::select(disease_name, MB_feature, p.value, FDR, confounding_status_base, confounding_status_drugs, confounding_status_cumulative) %>% 
   dplyr::mutate(all = as.character(NA)) %>% 
   dplyr::group_by(disease_name) %>% 
@@ -103,9 +98,9 @@ disease_deconf_plot <- ggplot(deconf_aggregated %>% dplyr::filter(disease_name %
                                   y = value,
                                   fill = factor(confounders, levels = c("all", "base", "drugs", "cumulative"),
                                                 labels = c("Nominal hits", 
-                                                           "Confounded by lifestyle/diet/other diseases", 
-                                                           "Confounded by lifestyle/diet/other diseases + active drug usage", 
-                                                           "Confounded by lifestyle/diet/other diseases + active drug usage + past drug usage")))) + 
+                                                           "Deconfounded by lifestyle/diet/other diseases", 
+                                                           "Deconfounded by lifestyle/diet/other diseases + active drug usage", 
+                                                           "Deconfounded by lifestyle/diet/other diseases + active drug usage + past drug usage")))) + 
   geom_bar(stat = "identity", position = "dodge") + 
   xlab("") + 
   ylab("Number of univariate hits (p-value <= 0.05)") +

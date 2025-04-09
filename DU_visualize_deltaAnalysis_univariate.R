@@ -8,15 +8,10 @@
 #------------------------------------------------#
 
 # Load packages
-library("readr")
-library("dplyr")
-library("effsize")
-library("ppcor")
-library("stringr")
 library("tidyverse")
 library("ggpubr")
-library("ggsankey")
-
+library("ggthemes")
+library("ggsci")
 
 # ATC names 
 ATC_names <- readRDS("RData/Interim/DrugUsage_ATC_names.rds")

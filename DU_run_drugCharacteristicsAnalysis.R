@@ -8,11 +8,9 @@
 #------------------------------------------------#
 
 # Load packages
-library("readr")
-library("dplyr")
 library("effsize")
 library("ppcor")
-library("stringr")
+library("tidyverse")
 
 # Read the data
 phenotype_data <- readRDS("RData/Interim/Data_master.rds") 

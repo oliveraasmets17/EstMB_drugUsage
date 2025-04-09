@@ -8,8 +8,7 @@
 #------------------------------------------------#
 
 # Load the packages
-library("dplyr")
-library("tidyr")
+library("tidymodels")
 library("compositions")
 library("tidymodels")
 

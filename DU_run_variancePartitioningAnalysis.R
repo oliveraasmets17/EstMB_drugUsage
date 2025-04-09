@@ -44,8 +44,7 @@ distance_mat_name = args[2]
 
 # Load the packages
 library("vegan")
-library("stringr")
-library("dplyr")
+library("tidyverse")
 
 # Phenotype data
 old_drugs <- readRDS("RData/Interim/Medication_factors_analyzed.rds")

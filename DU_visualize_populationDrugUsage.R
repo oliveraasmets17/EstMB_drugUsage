@@ -10,15 +10,7 @@
 #------------------------------------------------#
 
 # Load the packages
-library("pheatmap")
-library("ggsci")
-library("ggtree")
-library("ggnewscale")
-library("ape")
-library("ggpubr")
 library("tidyverse")
-library("readr")
-library("xlsx")
 library("ggthemes")
 
 

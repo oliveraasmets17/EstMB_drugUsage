@@ -7,12 +7,9 @@
 #------------------------------------------------#
 
 # Load packages
-library("readr")
-library("dplyr")
+library("tidyverse")
 library("effsize")
 library("ppcor")
-library("stringr")
-library("tidyverse")
 library("ggpubr")
 
 

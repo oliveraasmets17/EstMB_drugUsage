@@ -8,14 +8,9 @@
 #------------------------------------------------#
 
 # Load the packages
-library("dplyr")
-library("tidyr")
-library("compositions")
-library("tidymodels")
-library("stringr")
+library("tidyverse")
 library("ggthemes")
-library("ggsci")
-library("readr")
+
 
 # Abundance data
 countData_raw <- readRDS("RData/Interim/mOTUs_PA_prevalence10p.rds") 
@@ -77,47 +72,43 @@ xlsx::write.xlsx(x = AUC_plotData,
 #----------------------------------#
 
 # Factor order
-model_drug_order <- AUC_plotData %>% 
-  dplyr::group_by(drug_name) %>% 
-  dplyr::summarise(mean_AUC = mean(AUC_final)) %>% 
+test_drug_order <- AUC_plotData %>% 
+  dplyr::group_by(test_drug_name) %>% 
+  dplyr::summarise(mean_AUC = mean(AUROC)) %>% 
   dplyr::ungroup() %>% 
   dplyr::arrange(desc(mean_AUC)) %>% 
-  dplyr::pull(drug_name)
+  dplyr::pull(test_drug_name)
   
   
 # Heatmap version - average + pairwise comparison
 heatmap_plotData <- data.frame()
-for (i in unique(AUC_plotData$model_drug)){
-  for (j in unique(AUC_plotData$test_drug)){
+for (i in unique(AUC_plotData$model_drug_name)){
+  for (j in unique(AUC_plotData$test_drug_name)){
     
     run_df = AUC_plotData %>% 
-      dplyr::filter(model_drug == i & test_drug == j)
+      dplyr::filter(model_drug_name == i & test_drug_name == j)
     
-    mean_AUC = mean(run_df$AUC_final)
-    p_val = t.test(run_df$AUC_final, mu = 0.5, alternative = "greater")$p.value
+    mean_AUC = mean(run_df$AUROC)
+    p_val = t.test(run_df$AUROC, mu = 0.5, alternative = "greater")$p.value
     
-    run_res = data.frame(model_drug = i, test_drug = j, mean_AUC, p_val, drug_name = run_df$drug_name[1])
+    run_res = data.frame(model_drug = i, test_drug = j, mean_AUC, p_val, drug_name = run_df$model_drug_name[1])
     
     heatmap_plotData = dplyr::bind_rows(heatmap_plotData, run_res)
   }
-  
 }
+
 heatmap_plotData_final <- heatmap_plotData %>% 
-  dplyr::rename("drug_name_test" = "drug_name") %>% 
-  dplyr::left_join(ATC_names, by = c("model_drug" = "drug_code")) %>% 
-  dplyr::filter(model_drug %in% c("J01CR", "J01CA", "J01FA")) %>% 
-  dplyr::filter(drug_name_test %in% model_drug_order) %>% 
   dplyr::filter(model_drug != test_drug) %>%
-  dplyr::mutate(drug_name = case_when(model_drug == "J01CA" ~ "Penicillins with \nExtended Spectrum \n(J01CA)", 
-                                      model_drug == "J01CR" ~ "Penicillins in \nCombination \n(J01CR)", 
-                                      model_drug == "J01FA" ~ "Macrolides (J01FA)", 
+  dplyr::mutate(drug_name = case_when(model_drug == "Penicillins With Extended Spectrum (J01CA)" ~ "Penicillins with \nExtended Spectrum \n(J01CA)", 
+                                      model_drug == "Penicillins in Combination (J01CR)" ~ "Penicillins in \nCombination \n(J01CR)", 
+                                      model_drug == "Macrolides (J01FA)" ~ "Macrolides (J01FA)", 
                                       TRUE ~ drug_name), 
                 mean_AUC_class = cut(mean_AUC, breaks = c(-Inf, 0.5, 0.55, 0.6, 0.65, 0.7, Inf)))
 
 
 # Visualize
 ML_generalizability_heatmap <- ggplot(heatmap_plotData_final, 
-                                      aes(y = factor(drug_name_test, levels = model_drug_order), 
+                                      aes(y = factor(test_drug, levels = test_drug_order), 
                                                                   x = drug_name, fill = mean_AUC_class)) +
   geom_tile(color = "white") + 
   geom_text(aes(label = round(mean_AUC, 2)), size = 5) + 

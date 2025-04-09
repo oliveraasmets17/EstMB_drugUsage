@@ -8,17 +8,9 @@
 #------------------------------------------------#
 
 # Load the packages
-library("pheatmap")
-library("ggsci")
-library("ggtree")
-library("ggnewscale")
-library("ape")
-library("ggpubr")
 library("tidyverse")
-library("readr")
-library("xlsx")
+library("ggpubr")
 library("ggthemes")
-library("ggExtra")
 
 
 # Taxonomy information 
@@ -26,7 +18,7 @@ taxonomy_raw <- readRDS("C:/Users/oliver17/Desktop/Doktorantuur/Projekt_DrugUsag
   tidyr::separate(taxonomy, into = c("k", "p", "c", "o", "f", "g", "s"), sep = "\\|", remove = FALSE) %>% 
   dplyr::arrange(k, p, c, o, f, g, s)
 
-p_order <- taxonomy %>% 
+p_order <- taxonomy_raw %>% 
   dplyr::group_by(p) %>%
   dplyr::summarise(n = n()) %>% 
   dplyr::ungroup() %>% 

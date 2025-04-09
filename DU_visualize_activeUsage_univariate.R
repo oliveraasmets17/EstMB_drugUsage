@@ -8,18 +8,8 @@
 #------------------------------------------------#
 
 # Load the packages
-library("pheatmap")
-library("ggsci")
-library("ggtree")
-library("ggnewscale")
-library("ape")
-library("ggpubr")
 library("tidyverse")
-library("readr")
-library("xlsx")
 library("ggthemes")
-library("ggExtra")
-
 
 # Taxonomy information 
 taxonomy_raw <- readRDS("C:/Users/oliver17/Desktop/Doktorantuur/Projekt_DrugUsage/RData/Interim/mOTUs_taxonomy_used.rds") %>% 

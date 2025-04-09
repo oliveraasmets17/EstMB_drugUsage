@@ -10,17 +10,9 @@
 #------------------------------------------------#
 
 # Load the packages
-library("pheatmap")
-library("ggsci")
-library("ggtree")
-library("ggnewscale")
-library("ape")
-library("ggpubr")
 library("tidyverse")
-library("readr")
-library("xlsx")
+library("ggpubr")
 library("ggthemes")
-library("ggExtra")
 
 
 # Taxonomy information 
