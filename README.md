@@ -1,6 +1,9 @@
-Scripts for analysing long-term drug usage effects
+**Scripts for analysing long-term drug usage effects**
+
 This folder contains analysis scripts used for analyzing the long-term effects of drug usage in the Estonian Microbiome Cohort [1]. The scripts used were used to produce the results for the manuscript “A hidden confounder for microbiome studies: medications used years before sample collection” [2]. Some additional functions in the scripts are used for other analysis not covered in the manuscript. 
-Expected folder structure
+
+**Expected folder structure**
+
 -RData (Help-files in rds format)
      --Interim (Interim files for data analysis)
     -- Results (Analysis results)
@@ -9,7 +12,7 @@ Expected folder structure
 
 Analysis scripts are in the home folder. Occasionally, global paths are used by the scripts to indicate the location of source data. 
 
-Running the code
+**Running the code**
 
 Run analysis codes
 1.	DU_run_PERMANOVA.R
@@ -53,7 +56,7 @@ Script to produce Extended Data Fig 4. based on the output of DU_run_diseaseAnal
 19.	DU_visualize_timeFromAB_nrDrugs.R
 Script to produce Extended Data Fig 2a and Figure 3b
 
-R packages used 
+**R packages used **
 •	tidyverse (v2.0.0)
 •	ppcor (v1.1)
 •	effsize (v0.8.1)
@@ -64,7 +67,7 @@ R packages used
 •	ggthemes (v5.1.0)
 •	ggsci (v3.2.0)
 
-References
+**References**
 [1] Aasmets O, Krigul KL, Lüll K, Metspalu A, Org E. Gut metagenome associations with extensive digital health data in a volunteer-based Estonian microbiome cohort. Nat Commun. 2022 Feb 15;13(1):869. doi: 10.1038/s41467-022-28464-9. PMID: 35169130; PMCID: PMC8847343.
 [2] Aasmets O, Taba N, Krigul KL, Andreson R, Org E. Long-term consequences of drug usage on the gut microbiome. medRxiv. doi: 10.1101/2024.07.17.24310548 
 [3] Forslund SK, Chakaroun R, Zimmermann-Kogadeeva M, Markó L, Aron-Wisnewsky J, Nielsen T, Moitinho-Silva L, Schmidt TSB, Falony G, Vieira-Silva S, Adriouch S, Alves RJ, Assmann K, Bastard JP, Birkner T, Caesar R, Chilloux J, Coelho LP, Fezeu L, Galleron N, Helft G, Isnard R, Ji B, Kuhn M, Le Chatelier E, Myridakis A, Olsson L, Pons N, Prifti E, Quinquis B, Roume H, Salem JE, Sokolovska N, Tremaroli V, Valles-Colomer M, Lewinter C, Søndertoft NB, Pedersen HK, Hansen TH; MetaCardis Consortium*; Gøtze JP, Køber L, Vestergaard H, Hansen T, Zucker JD, Hercberg S, Oppert JM, Letunic I, Nielsen J, Bäckhed F, Ehrlich SD, Dumas ME, Raes J, Pedersen O, Clément K, Stumvoll M, Bork P. Combinatorial, additive and dose-dependent drug-microbiome associations. Nature. 2021 Dec;600(7889):500-505. doi: 10.1038/s41586-021-04177-9. Epub 2021 Dec 8. PMID: 34880489.
