@@ -4,11 +4,11 @@ This folder contains analysis scripts used for analyzing the long-term effects o
 
 ## Expected folder structure
 
--RData (Help-files in rds format)
-     --Interim (Interim files for data analysis)
+- RData (Help-files in rds format)
+     -- Interim (Interim files for data analysis)
     -- Results (Analysis results)
--Data (Input data for the project)
--Figures (Figures for the manuscripts)
+- Data (Input data for the project)
+- Figures (Figures for the manuscripts)
 
 Analysis scripts are in the home folder. Occasionally, global paths are used by the scripts to indicate the location of source data. 
 
@@ -73,4 +73,4 @@ Script to produce Extended Data Fig 2a and Figure 3b
 * [2] Aasmets O, Taba N, Krigul KL, Andreson R, Org E. Long-term consequences of drug usage on the gut microbiome. medRxiv. doi: 10.1101/2024.07.17.24310548 
 * [3] Forslund SK, Chakaroun R, Zimmermann-Kogadeeva M, Markó L, Aron-Wisnewsky J, Nielsen T, Moitinho-Silva L, Schmidt TSB, Falony G, Vieira-Silva S, Adriouch S, Alves RJ, Assmann K, Bastard JP, Birkner T, Caesar R, Chilloux J, Coelho LP, Fezeu L, Galleron N, Helft G, Isnard R, Ji B, Kuhn M, Le Chatelier E, Myridakis A, Olsson L, Pons N, Prifti E, Quinquis B, Roume H, Salem JE, Sokolovska N, Tremaroli V, Valles-Colomer M, Lewinter C, Søndertoft NB, Pedersen HK, Hansen TH; MetaCardis Consortium*; Gøtze JP, Køber L, Vestergaard H, Hansen T, Zucker JD, Hercberg S, Oppert JM, Letunic I, Nielsen J, Bäckhed F, Ehrlich SD, Dumas ME, Raes J, Pedersen O, Clément K, Stumvoll M, Bork P. Combinatorial, additive and dose-dependent drug-microbiome associations. Nature. 2021 Dec;600(7889):500-505. doi: 10.1038/s41586-021-04177-9. Epub 2021 Dec 8. PMID: 34880489.
 
-
+Contact: oliver.aasmets@ut.ee
