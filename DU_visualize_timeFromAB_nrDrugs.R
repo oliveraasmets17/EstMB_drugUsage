@@ -26,7 +26,8 @@ phenotype_data <- readRDS("RData/Interim/Data_master.rds")
 
 
 # Raw drug data
-MB_medications_data <- readRDS("RData/Interim/MB_medications_data_HIF.rds")
+MB_medications_data <- readRDS("RData/Interim/MB_medications_data_HIF.rds") %>% 
+  dplyr::filter(Time_from_MBsample <= 1826.25)
 
 
 # Cell counts
